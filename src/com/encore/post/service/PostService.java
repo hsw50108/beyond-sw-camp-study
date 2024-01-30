@@ -20,6 +20,11 @@ public class PostService {
 
     public String savePost(PostRequestDto request) {
         System.out.println("debug >>>> working method completed..");
-        return "작성하신 글이 저장되었습니다.";
+        return request.getId() + "님이 작성하신 글이 저장되었습니다.";
+    }
+
+    public String deletePost(PostRequestDto request) {
+        System.out.println("debug >>>> working method completed..");
+        return request.getId() + "님이 작성하신 글이 삭제 되었습니다.";
     }
 }

@@ -22,6 +22,10 @@ public class PostRequestDto {
         this.isFlag = isFlag;
     }
 
+    public PostRequestDto(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }
