@@ -21,13 +21,19 @@ public class PostMain {
 
         // case03
         // view를 이용한 사용자 입력과 연결
-        PostView view = new PostView();
-        view.menu();
+//        PostView view = new PostView();
+//        view.menu();
 
+        // case04
+        // 불필요하게 발생되는 객체생성을 효율적으로 관리하기 위해서 얕은복사 개념을 사용할 수 있다.
 
+        PostService postService = new PostService();
+        PostRequestDto postRequestDto = new PostRequestDto();
 
+        PostView postView = new PostView(postService, postRequestDto);
+//        PostView postView = new PostView(new PostService(), new PostRequestDto());
 
-
+        postView.menu();
     }
 
 }

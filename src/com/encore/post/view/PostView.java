@@ -7,6 +7,15 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class PostView {
+    private PostService postService;
+    private PostRequestDto requestDto;
+
+    // 생성자 오버로딩
+    public PostView() {}
+    public PostView(PostService postService, PostRequestDto requestDto) {
+        this.postService = postService;
+        this.requestDto = requestDto;
+    }
 
     public void menu() {
         Scanner scanner = new Scanner(System.in);
@@ -48,11 +57,10 @@ public class PostView {
         System.out.print("아이디 : ");
         String id = scan.nextLine();
 
-        PostService postService = new PostService();
-        PostRequestDto request = new PostRequestDto(id);
-        String msg = postService.deletePost(request);
-        System.out.println("result >>> " + msg);
+        requestDto.setId(id);
+        String msg = postService.deletePost(requestDto);
 
+        System.out.println("result >>> " + msg);
     }
 
     public void requestSave() {
@@ -73,9 +81,14 @@ public class PostView {
         System.out.print("공개여부 : ");
         boolean isFlag = scan.nextBoolean();
 
-        PostService postService = new PostService();
-        PostRequestDto request = new PostRequestDto(id, title, content, LocalDateTime.now(), views, isFlag);
-        String msg = postService.savePost(request);
+        requestDto.setId(id);
+        requestDto.setTitle(title);
+        requestDto.setContent(content);
+        requestDto.setRegisterDate(LocalDateTime.now());
+        requestDto.setViews(views);
+        requestDto.setPublic(isFlag);
+
+        String msg = postService.savePost(requestDto);
         System.out.println("result >>> " + msg);
     }
 
