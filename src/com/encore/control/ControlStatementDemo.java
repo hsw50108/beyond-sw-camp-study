@@ -43,6 +43,37 @@ public class ControlStatementDemo {
     }
 
 
+    public double calc(int x, char operation, int y) {
+        double value = 0.0;
+        // case 1 : 기본(if)
+       /* if (operation == '+') {
+            value = x + y;
+        } else if (operation == '-') {
+            value = x - y;
+        }else if (operation == '*') {
+            value = x * y;
+        } else if (operation == '/') {
+            value = x / y;
+        } else {
+            System.out.println("사칙 연산자만 허용합니다.");
+        }*/
 
+        // case 2 : 삼항연산자
+        /*System.out.println(
+                operation == '+' ? value = x+y
+                        : operation == '-' ? value=  x - y
+                        : operation == '*' ? value = x * y
+                        : operation == '/' ? value = x / y : "사칙연산만 가능합니다.");*/
 
+        // case 3 : switch ~ case
+        switch (operation) {
+            case '+' -> value = x + y;
+            case '-' -> value = x - y;
+            case '*' -> value = x * y;
+            case '/' -> value = (double) x / y;
+            default -> System.out.println("사칙 연산자만 허용합니다.");
+        }
+
+        return value;
+    }
 }
