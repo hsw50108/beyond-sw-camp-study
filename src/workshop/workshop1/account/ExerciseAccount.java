@@ -13,12 +13,12 @@ public class ExerciseAccount {
 
         System.out.println("10000 원을 입금합니다.");
         account.addBalance(10000);
-        System.out.println("증가 후 잔액 : " + account.getBalance()+ "원");
+//        System.out.println("증가 후 잔액 : " + account.getBalance()+ "원");
 //        System.out.println("증가 후 잔액 : " + account.addBalance(10000) + "원");
 
         System.out.println("20000 원을 출금합니다.");
         account.subtractBalance(20000);
-        System.out.println("증가 후 잔액 : " + account.getBalance()+ "원");
+//        System.out.println("증가 후 잔액 : " + account.getBalance()+ "원");
 //        System.out.println("출금 후 잔액 : " + account.subtractBalance(20000) + "원");
 
     }

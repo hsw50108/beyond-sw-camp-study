@@ -21,10 +21,12 @@ public class Account {
 
     public void addBalance(int amount) {
         this.balance += amount;
+        System.out.println("증가 후 잔액 : " + balance + "원");
     }
 
     public void subtractBalance(int amount) {
         this.balance -= amount;
+        System.out.println("감소 후 잔액 : " + balance + "원");
     }
 
 
