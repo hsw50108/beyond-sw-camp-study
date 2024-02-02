@@ -1,4 +1,4 @@
-package workshop.workshop1.account;
+package workshop.workshop3.account;
 
 public class ExerciseAccount {
     public static void main(String[] args) {

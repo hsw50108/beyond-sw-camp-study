@@ -1,4 +1,4 @@
-package workshop.workshop1.account;
+package workshop.workshop3.account;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

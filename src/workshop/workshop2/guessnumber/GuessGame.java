@@ -1,7 +1,6 @@
-package workshop.workshop1.guessnumber;
+package workshop.workshop2.guessnumber;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class GuessGame {
 
