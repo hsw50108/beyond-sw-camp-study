@@ -13,4 +13,5 @@ public class StudentDto extends Person {
         super.printInfo();
         System.out.println("학생 번호 : " + stuId);
     }
+
 }
