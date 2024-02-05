@@ -1,5 +1,8 @@
 package com.encore.hms.domain.sup;
 
+import lombok.Getter;
+
+@Getter
 public class Person {
     private final String name;
     private final int age;
@@ -12,9 +15,7 @@ public class Person {
     }
 
     public void printInfo() {
-        System.out.println("이름 : " + name);
-        System.out.println("나이 : " + age);
-        System.out.println("주소 : " + address);
+        System.out.println("이름 : " + name + " 나이 : " + age + " 주소 : " + address);
     }
 
 }

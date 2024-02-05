@@ -3,7 +3,7 @@ package com.encore.hms.domain;
 import com.encore.hms.domain.sup.Person;
 
 public class StudentDto extends Person {
-    private final String stuId;
+    private String stuId;
     public StudentDto(String name, int age, String address, String stuId) {
         super(name, age, address);
         this.stuId = stuId;
@@ -11,7 +11,11 @@ public class StudentDto extends Person {
     @Override
     public void printInfo() {
         super.printInfo();
-        System.out.println("학생 번호 : " + stuId);
+        System.out.println("- 학생 번호 : " + stuId);
+    }
+
+    public void changeStudentId(String stuId) {
+        this.stuId = stuId;
     }
 
 }

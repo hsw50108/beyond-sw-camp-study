@@ -1,9 +1,12 @@
-import com.encore.hms.service.HmsService;
-import com.encore.hms.util.HmsType;
+import com.encore.hms.view.HmsView;
 
 // 1. student 2. teacher 3. employee
 public class HmsMain {
     public static void main(String[] args) {
+        HmsView hmsView = new HmsView();
+        hmsView.mainMenu();
+
+        /*
         HmsService hmsService = new HmsService(10);
         String msg = hmsService.makePerson(HmsType.STUDENT, "dongwook", 20, "seoul", "1992");
         System.out.println(msg);
@@ -14,5 +17,6 @@ public class HmsMain {
 
         msg = hmsService.makePerson(HmsType.EMPLOYEE, "dongwook", 20, "seoul", "hr");
         System.out.println(msg);
+         */
     }
 }
