@@ -1,8 +1,10 @@
 package com.encore.hms.domain.sup;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class Person {
     private final String name;
     private final int age;

@@ -33,7 +33,8 @@ public class HmsService {
         };
 
         setPersonArray(person);
-        return (index) + "번지에 데이터를 담았습니다.";
+        msg = (index) + "번지에 데이터를 담았습니다.";
+        return msg;
     }
 
     public void setPersonArray(Person person) {
@@ -53,7 +54,17 @@ public class HmsService {
         return null;
     }
 
-    public void updatePerson(String findName, String inputChangeDetail) {
+    // 1. 배열객체가 가지고 있는 ary.clone();
+    // 2. Arrays.copyOf(ary, ary.length)
+    public Person updatePerson(String findName) {
+       /* Person[] copyPerson = personArray.clone();
+        Person copyPerson = Arrays.copyOf(ary, ary.length);
+        System.out.println("original address : " + personArray);
+        System.out.println("copy address : " + copyPerson);*/
+        return findByName(findName);
+    }
+
+    /*public Person updatePerson(String findName, String inputChangeDetail) {
         Person person = findByName(findName);
         if (person instanceof StudentDto student) {
             student.changeStudentId(inputChangeDetail);
@@ -62,14 +73,16 @@ public class HmsService {
         } else if (person instanceof TeacherDto teacher) {
             teacher.changeSubject(inputChangeDetail);
         }
-    }
+        return person;
+    }*/
 
     public void remove(String findName) {
         int count = personArray.length;
         boolean flag = false;
         for (int i = 0; i < count; i++) {
             if (findName.equals(personArray[i].getName())) {
-                for (int j = 0; j < count - 1; j++) {
+                System.out.println(personArray[i] + "를 삭제했습니다.");
+                for (int j = i; j < count - 1; j++) {
                     personArray[j] = personArray[j + 1];
                 }
                 flag = true;
@@ -77,12 +90,16 @@ public class HmsService {
             }
         }
         if (flag) {
-            System.out.println("삭제 후 정보");
-            for (int i = 0; i < personArray.length; i++) {
-                Person person = personArray[i];
-                person.printInfo();
+            System.out.println("삭제 후 전체 출력");
+            for (int idx = 0 ;  idx < personArray.length ; idx++) {
+                Person per = personArray[idx] ;
+                if(per == null) {
+                    break;
+                }
+                per.printInfo();
             }
         }
     }
+
 
 }

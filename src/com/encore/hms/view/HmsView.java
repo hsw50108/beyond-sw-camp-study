@@ -1,5 +1,8 @@
 package com.encore.hms.view;
 
+import com.encore.hms.domain.EmployeeDto;
+import com.encore.hms.domain.StudentDto;
+import com.encore.hms.domain.TeacherDto;
 import com.encore.hms.domain.sup.Person;
 import com.encore.hms.service.HmsService;
 import com.encore.hms.util.HmsType;
@@ -77,9 +80,31 @@ public class HmsView {
         System.out.print("찾으시는 이름을 입력해주세요 : ");
         String findName = scanner.nextLine();
 
-        System.out.print("원하시는 상세 정보 변경을 입력해주세요 : ");
-        String inputChangeDetail = scanner.nextLine();
-        hmsService.updatePerson(findName,inputChangeDetail);
+        Person obj = hmsService.updatePerson(findName);
+        if (obj != null) {
+            if (obj instanceof StudentDto student) {
+                System.out.println("학번 수정");
+                String stuId = scanner.nextLine();
+                student.changeStudentId(stuId);
+            }
+            if (obj instanceof TeacherDto teacher) {
+                System.out.println("과목 수정");
+                String subject = scanner.nextLine();
+                teacher.changeSubject(subject);
+            }
+            if (obj instanceof EmployeeDto employee) {
+                System.out.println("부서 수정");
+                String dept = scanner.nextLine();
+                employee.changeDept(dept);
+            }
+        } else {
+            System.out.println("정보가 존재하지 않습니다.");
+        }
+
+
+//        System.out.print("원하시는 상세 정보 변경을 입력해주세요 : ");
+//        String inputChangeDetail = scanner.nextLine();
+//        hmsService.updatePerson(findName,inputChangeDetail);
     }
 
     /*
@@ -93,6 +118,7 @@ public class HmsView {
         System.out.print("찾으시는 이름을 입력해주세요 : ");
         String findName = scanner.nextLine();
 
+
         hmsService.remove(findName);
     }
 
@@ -105,9 +131,12 @@ public class HmsView {
             System.out.println();
             System.out.println(">> 데이터가 존재하지 않습니다");
         } else {
-            for (Person person : personArray) {
-                person.printInfo();
-                System.out.println();
+            for(int idx = 0 ;  idx < personArray.length ; idx++) {
+                Person per = personArray[idx] ;
+                if(per == null) {
+                    break;
+                }
+                per.printInfo();
             }
         }
     }
@@ -140,21 +169,20 @@ public class HmsView {
             Result result = getResult(scanner);
             System.out.print("학번을 입력해주세요 : ");
             String detail = scanner.nextLine();
+            System.out.println(hmsService.makePerson(HmsType.STUDENT, result.name(), result.age(), result.address(), detail));
 
-            hmsService.makePerson(HmsType.STUDENT, result.name(), result.age(), result.address(), detail);
         } else if (number == 2) {
             Result result = getResult(scanner);
             System.out.print("과목을 입력해주세요 : ");
             String detail = scanner.nextLine();
-
-            hmsService.makePerson(HmsType.TEACHER, result.name(), result.age(), result.address(), detail);
+            System.out.println(hmsService.makePerson(HmsType.TEACHER, result.name(), result.age(), result.address(), detail));
 
         } else if (number == 3) {
             Result result = getResult(scanner);
             System.out.print("부서를 입력해주세요 : ");
             String detail = scanner.nextLine();
+            System.out.println(hmsService.makePerson(HmsType.TEACHER, result.name(), result.age(), result.address(), detail));
 
-            hmsService.makePerson(HmsType.TEACHER, result.name(), result.age(), result.address(), detail);
         }
     }
 
