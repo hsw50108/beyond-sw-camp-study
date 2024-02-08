@@ -7,6 +7,8 @@ import com.encore.hms.domain.sup.Person;
 import com.encore.hms.util.HmsType;
 import lombok.Getter;
 
+import java.io.*;
+
 // business logic 가지고 있는 클래스
 // 1. 배열을 관리
 // 2. 생성된 배열에 학생, 강사, 직원 객체를 담을 것
@@ -101,5 +103,54 @@ public class HmsService {
         }
     }
 
+    public void saveToFile() {
+        FileOutputStream fis = null;
+        ObjectOutputStream oos = null;
+        try {
+            fis = new FileOutputStream("c:/file/hms.txt");
+            oos = new ObjectOutputStream(fis);
+            oos.writeObject(personArray);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+    public Person[] loadToFile() {
+        String msg = null;
+        FileInputStream fis = null;
+        ObjectInputStream oos = null;
+
+        try {
+            fis = new FileInputStream("c:/file/hms.txt");
+            oos = new ObjectInputStream(fis);
+            Person[] perAry = (Person[]) oos.readObject();
+            for (int i = 0; i < perAry.length; i++) {
+                if (perAry[i] != null) {
+                    System.out.println(perAry[i].printInfo());
+                    personArray[i] = perAry[i];
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return personArray;
+    }
 }

@@ -31,6 +31,7 @@ public class HmsView {
             switch (number) {
                 case 1:
                     perPrint();
+                    hmsService.loadToFile();
                     break;
                 case 2:
                     search();
@@ -45,7 +46,16 @@ public class HmsView {
                     subMenu();
                     break;
                 case 99:
-                    System.out.println("프로그램을 종료 후 데이터는 보관되지 않습니다.");
+                    System.out.print("데이터를 저장(Y/N) 하시겠습니까?");
+                    String confirmYN = sc.next();
+
+                    if (confirmYN.equalsIgnoreCase("y")) {
+                        hmsService.saveToFile();
+                        System.out.println("데이터 저장 완료");
+                    } else {
+                        System.out.println("프로그램을 종료 후 데이터는 보관되지 않습니다.");
+                    }
+
                     System.exit(0);
             }
         }
@@ -101,10 +111,6 @@ public class HmsView {
             System.out.println("정보가 존재하지 않습니다.");
         }
 
-
-//        System.out.print("원하시는 상세 정보 변경을 입력해주세요 : ");
-//        String inputChangeDetail = scanner.nextLine();
-//        hmsService.updatePerson(findName,inputChangeDetail);
     }
 
     /*
@@ -131,9 +137,9 @@ public class HmsView {
             System.out.println();
             System.out.println(">> 데이터가 존재하지 않습니다");
         } else {
-            for(int idx = 0 ;  idx < personArray.length ; idx++) {
-                Person per = personArray[idx] ;
-                if(per == null) {
+            for (int idx = 0; idx < personArray.length; idx++) {
+                Person per = personArray[idx];
+                if (per == null) {
                     break;
                 }
                 per.printInfo();
@@ -199,5 +205,7 @@ public class HmsView {
 
         return new Result(name, age, address);
     }
-    private record Result(String name, int age, String address) {}
+
+    private record Result(String name, int age, String address) {
+    }
 }
