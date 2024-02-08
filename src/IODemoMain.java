@@ -33,6 +33,6 @@ public class IODemoMain {
         System.out.println(">>> main finito <<<");
 
         // case03
-        demo.  first(0);
+        demo.first(0);
     }
 }
