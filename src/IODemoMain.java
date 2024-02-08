@@ -27,12 +27,28 @@ public class IODemoMain {
 
 
         // case02
-        int data = demo.inputInt();
-        System.out.println(data);
-        System.out.println();
-        System.out.println(">>> main finito <<<");
+//        int data = demo.inputInt();
+//        System.out.println(data);
+//        System.out.println();
+//        System.out.println(">>> main finito <<<");
 
         // case03
-        demo.first(0);
+//        demo.first(0);
+
+        // case05
+//        boolean flag = demo.outputFile();
+//        String msg = (flag) ? "저장 성공" : "저장실패";
+//        System.out.println(msg);
+
+        // case06
+        /*boolean flag = demo.outputObjFile();
+        String msg = (flag) ? "저장 성공" : "저장실패";
+        System.out.println(msg);
+*/
+
+        // case 07
+//        demo.outputSerializable();
+        demo.inputSerializable();
+
     }
 }

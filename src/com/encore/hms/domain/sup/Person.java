@@ -3,9 +3,11 @@ package com.encore.hms.domain.sup;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 @Getter
 @ToString
-public class Person {
+public class Person implements Serializable {
     private final String name;
     private final int age;
     private final String address;
@@ -16,8 +18,8 @@ public class Person {
         this.address = address;
     }
 
-    public void printInfo() {
-        System.out.println("이름 : " + name + " 나이 : " + age + " 주소 : " + address);
+    public String printInfo() {
+        return "이름 : " + name + " 나이 : " + age + " 주소 : " + address;
     }
 
 }
