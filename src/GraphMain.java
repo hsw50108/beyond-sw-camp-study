@@ -4,32 +4,40 @@ import com.encore.data.structor.graph.GraphServiceImpl;
 public class GraphMain {
     public static void main(String[] args) {
 
-        GraphServiceImpl graphService = new GraphServiceImpl();
-
-        GraphNode node1 = graphService.makeNode(1);
-        GraphNode node2 = graphService.makeNode(1);
-        GraphNode node3 = graphService.makeNode(1);
-        GraphNode node4 = graphService.makeNode(1);
-        GraphNode node5 = graphService.makeNode(1);
-        GraphNode node6 = graphService.makeNode(1);
-
+        // 1 ~ 6 노드 생성
+        // GraphServiceImpl - makeNode(int data) : GraphNode
+        GraphServiceImpl service = new GraphServiceImpl();
+        GraphNode node1 = service.makeNode(1) ;
+        GraphNode node2 = service.makeNode(2) ;
+        GraphNode node3 = service.makeNode(3) ;
+        GraphNode node4 = service.makeNode(4) ;
+        GraphNode node5 = service.makeNode(5) ;
+        GraphNode node6 = service.makeNode(6) ;
 
         // 생성한(1 ~ 6) 노드의 방향을 연결
-        graphService.makeEdge(node1, node2);
-        graphService.makeEdge(node2, node4);
-        graphService.makeEdge(node4, node3);
-        graphService.makeEdge(node3, node5);
-        graphService.makeEdge(node5, node4);
-    }
+        service.makeEdge(node1, node2);
+        service.makeEdge(node2, node4);
+        service.makeEdge(node4, node3);
+        service.makeEdge(node3, node5);
+        service.makeEdge(node5, node4);
+        service.makeEdge(node3, node6);
+        service.makeEdge(node4, node1);
 
-    //재귀 호출이 필요
-    // Iterator
-    // 방문을 체크
-    public void dfs(GraphNode node) {
-        System.out.println(node.getData() + "\t");
-    }
+        //DFS 탐색.....
+        service.dfs(node1);
 
-    public void bfs(int[][] ary, boolean[] visit) {
+        System.out.println();
+        System.out.println();
+        System.out.println("BFS");
+
+        // 1 ~ 8 노드 생성
+        // 생성한(1 ~ 8) 노드의 연결
+        // 1. 배열, 2. GraphNode
+        System.out.println(">>> array version ") ;
+        int [][] ary = {{}, {2,3,7}, {1,3,5}, {1,2}, {6,8}, {2}, {4,7,8}, {1,6}, {4,6}};
+        boolean [] visit = new boolean[9];
+
+        service.bfs(ary, visit);
 
     }
 

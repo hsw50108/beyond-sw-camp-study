@@ -10,10 +10,10 @@ import com.encore.mvc.domain.PostResponseDto;
 public class MvcMain {
 
 	public static void main(String[] args) {
-		
+
 		// 사용자의 입력화면을 통해서 게시글 작성을 요청하는 영역
 		InsertController insert = new InsertController() ;
-		
+
 		// 사용자가 입력한 값을 dto에 담아서 ctroller 전달
 		/*
 		PostRequestDto params = new PostRequestDto();
@@ -30,12 +30,15 @@ public class MvcMain {
 		int flag = insert.execute(map); 
 		System.out.println(">>>> insert Result : " + flag); 
 		*/
-		
+
 		System.out.println(">>> 전체 출력<<<<");
-		// SelectController select = new SelectController() ;
-		// List<PostResponseDto> list = select.execute();
+		SelectController select = new SelectController() ;
+		List<PostResponseDto> list = select.execute();
 		// 출력
-		
+		for(PostResponseDto dto : list) {
+			System.out.println(dto);
+		}
+
 	}
 
 }
