@@ -36,11 +36,22 @@ public class GenericsMain {
         // <? extends Skating> : skating을 상속받는 모든 하위 객체를 포람
 //        List<? extends Skating> list = new ArrayList();
 
-        List<? super Golf> list = new ArrayList();
+        // ? 저장은 x 꺼낼 수 있는데 반환 타입은 object
+        // 메서드의 리턴 타입, 매개변수 지정ㅣㅑ
+//        List<? extends Skating> list = new ArrayList();
+//        List<?> list = new ArrayList();
+        List<Skating> list = new ArrayList();
 
-        list.add(new Golf());
+        list.add(new ShortTrackSkating());
+        list.add(new SpeedSkating());
+//        list.add(new Golf());
 //        list.add(new Skating());
 //        list.add(new SpeedSkating());
 //        list.add(new ShortTrackSkating());
+        getExtendsMethod(list);
+    }
+
+    public static void getExtendsMethod(List<? extends  Skating> list) {
+
     }
 }

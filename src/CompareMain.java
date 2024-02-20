@@ -68,5 +68,8 @@ public class CompareMain {
             System.out.println("음수가 리턴");
             System.out.println("오름차순 정렬이라면 자리 변경 필요없음, 내림차순 정렬이라면 자리 변경이 필요");
         }
+
+        System.out.println("만약 기준을 여러개 잡고 싶음면?(나이를 기준으로 동일하다면 반을 기준으로 정렬)");
+
     }
 }
