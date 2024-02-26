@@ -34,7 +34,7 @@ public class LoginController extends HttpServlet {
 
             params.setId(id);
             params.setPassword(password);
-            params.setName("encore");
+            params.setName("엔코아");
 
             request.setAttribute("user", params);
 
