@@ -4,11 +4,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>test</title>
+    <title>ok</title>
 </head>
 <body>
 
-<div style="text-align: center"> Web Application Programming</div>
-
+<div style="text-align: center">
+    ${user.name} 님 안녕하세요 ~
+</div>
 </body>
 </html>

@@ -4,11 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>test</title>
+    <title>error</title>
 </head>
 <body>
 
-<div style="text-align: center"> Web Application Programming</div>
+<div style="text-align: center"> 아이디 또는 비밀번호를 확인해 주세요</div>
 
 </body>
 </html>
