@@ -1,5 +1,7 @@
 package org.example.mvc.bean.factory;
 
+import org.example.mvc.service.util.MvcService;
+import org.example.mvc.service.util.MvcServiceImpl;
 import org.example.mvc.user.controller.DeleteController;
 import org.example.mvc.user.controller.JoinController;
 import org.example.mvc.user.controller.LoginController;
@@ -17,13 +19,16 @@ public class BeanFactory {
     private Map<String, Controller> map;
     private static BeanFactory instance;
 
+    private MvcService mvcService;
+
     // join.hanwha, login.hanwha, update.hanwha, delete.hanwha
     private BeanFactory() {
         map = new HashMap<>();
-        map.put("/join.hanwha", new JoinController());
-        map.put("/login.hanwha", new LoginController());
-        map.put("/update.hanwha", new UpdateController());
-        map.put("/delete.hanwha", new DeleteController());
+        mvcService = new MvcServiceImpl();
+        map.put("/join.hanwha", new JoinController(mvcService));
+        map.put("/login.hanwha", new LoginController(mvcService));
+        map.put("/update.hanwha", new UpdateController(mvcService));
+        map.put("/delete.hanwha", new DeleteController(mvcService));
     }
 
     public static BeanFactory getInstance() {
