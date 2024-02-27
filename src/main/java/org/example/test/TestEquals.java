@@ -2,6 +2,8 @@ package org.example.test;
 
 public class TestEquals {
 
+
+
     private String name;
 
     public TestEquals() {
