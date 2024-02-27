@@ -2,7 +2,9 @@ package org.example.mvc.front.controller;
 
 import org.example.mvc.bean.factory.BeanFactory;
 import org.example.mvc.user.controller.util.Controller;
+import org.example.mvc.util.view.View;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,8 +31,15 @@ public class DispatcherController extends HttpServlet {
 //        BeanFactory beanFactory = new BeanFactory();
         BeanFactory beanFactory = BeanFactory.getInstance();
         Controller controller = beanFactory.getController(request.getRequestURI());
-        controller.execute();
 
+        View view = controller.execute();
+
+        if (view.isFlag()) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(view.getResponseJsp());
+            requestDispatcher.forward(request, response);
+        } else {
+            response.sendRedirect(view.getResponseJsp());
+        }
 
     }
 
