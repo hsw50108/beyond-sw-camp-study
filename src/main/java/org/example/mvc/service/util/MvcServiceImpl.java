@@ -1,15 +1,28 @@
 package org.example.mvc.service.util;
 
+import org.example.mvc.domain.dto.RequestUserDTO;
+import org.example.mvc.domain.dto.ResponseUserDTO;
+import org.example.mvc.model.dao.MvcDao;
+
 public class MvcServiceImpl implements MvcService {
+
+    MvcDao mvcDao;
+
+    public MvcServiceImpl(MvcDao mvcDao) {
+        this.mvcDao = mvcDao;
+    }
+
     @Override
     public void join() {
         System.out.println("MvcServiceImpl.join");
     }
 
     @Override
-    public void login() {
+    public ResponseUserDTO login(RequestUserDTO requestUserDTO) {
         System.out.println("MvcServiceImpl.login");
+        return mvcDao.loginRow(requestUserDTO);
     }
+
 
     @Override
     public void update() {

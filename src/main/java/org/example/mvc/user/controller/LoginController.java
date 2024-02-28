@@ -1,5 +1,7 @@
 package org.example.mvc.user.controller;
 
+import org.example.mvc.domain.dto.RequestUserDTO;
+import org.example.mvc.domain.dto.ResponseUserDTO;
 import org.example.mvc.service.util.MvcService;
 import org.example.mvc.user.controller.util.Controller;
 import org.example.mvc.util.view.View;
@@ -20,13 +22,24 @@ public class LoginController implements Controller {
     @Override
     public View execute(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("LoginController.execute");
+        String id = request.getParameter("id");
+        String pwd = request.getParameter("pwd");
+
+        System.out.println("LoginController.execute");
+        RequestUserDTO param = new RequestUserDTO(id, pwd);
+        ResponseUserDTO responseUserDTO = mvcService.login(param);
 
         View view = new View();
 
-        view.setFlag(true);
-        view.setResponseJsp("/login/login.jsp");
-
-        mvcService.login();
-        return view;
+        if (responseUserDTO != null) {
+            request.setAttribute("user", responseUserDTO);
+            view.setFlag(true);
+            view.setResponseJsp("./ok.jsp");
+            return view;
+        } else {
+            view.setFlag(true);
+            view.setResponseJsp("./error.jsp");
+            return view;
+        }
     }
 }

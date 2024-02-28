@@ -14,6 +14,7 @@ import java.io.IOException;
 
 @WebServlet("*.hanwha")
 public class DispatcherController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
@@ -28,20 +29,16 @@ public class DispatcherController extends HttpServlet {
         System.out.println("debug >>> FrontController process ");
         System.out.println("client request path : " + request.getRequestURI());
 
-//        BeanFactory beanFactory = new BeanFactory();
-        BeanFactory beanFactory = BeanFactory.getInstance();
-        Controller controller = beanFactory.getController(request.getRequestURI());
-
+        BeanFactory factory = BeanFactory.getInstance();
+        Controller controller = factory.getController(request.getRequestURI());
         View view = controller.execute(request, response);
 
         if (view.isFlag()) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(view.getResponseJsp());
-            requestDispatcher.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher(view.getResponseJsp());
+            rd.forward(request, response);
         } else {
             response.sendRedirect(view.getResponseJsp());
         }
-
     }
-
 
 }
