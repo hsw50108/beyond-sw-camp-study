@@ -1,5 +1,9 @@
 package org.example.test.controller;
 
+import org.example.mvc.service.util.MvcService;
+import org.example.mvc.user.controller.util.Controller;
+import org.example.mvc.util.view.View;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,16 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/index.encore")
-public class IndexController extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("IndexController.doGet");
-        RequestDispatcher view = request.getRequestDispatcher("./main.jsp");
-        view.forward(request, response);
+public class IndexController implements Controller {
+    private MvcService service;
+
+    public IndexController() {
+    }
+
+    public IndexController(MvcService service) {
+        this.service = service;
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response);
+    public View execute(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("debug >>> IndexController execute() ");
+        View view = new View();
+        view.setFlag(true);
+        view.setResponseJsp("./main.jsp");
+        return view;
     }
 }

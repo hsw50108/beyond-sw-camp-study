@@ -32,7 +32,7 @@ public class DispatcherController extends HttpServlet {
         BeanFactory beanFactory = BeanFactory.getInstance();
         Controller controller = beanFactory.getController(request.getRequestURI());
 
-        View view = controller.execute();
+        View view = controller.execute(request, response);
 
         if (view.isFlag()) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(view.getResponseJsp());
