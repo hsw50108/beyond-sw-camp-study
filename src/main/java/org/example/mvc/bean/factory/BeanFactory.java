@@ -4,10 +4,7 @@ import org.example.mvc.model.dao.MariaDao;
 import org.example.mvc.model.dao.MvcDao;
 import org.example.mvc.service.util.MvcService;
 import org.example.mvc.service.util.MvcServiceImpl;
-import org.example.mvc.user.controller.DeleteController;
-import org.example.mvc.user.controller.JoinController;
-import org.example.mvc.user.controller.LoginController;
-import org.example.mvc.user.controller.UpdateController;
+import org.example.mvc.user.controller.*;
 import org.example.mvc.user.controller.util.Controller;
 import org.example.test.controller.IndexController;
 
@@ -34,6 +31,8 @@ public class BeanFactory {
         map.put("/login.hanwha", new LoginController(mvcService));
         map.put("/update.hanwha", new UpdateController(mvcService));
         map.put("/delete.hanwha", new DeleteController(mvcService));
+        // 새로운 업무 등록
+        map.put("/select.hanwha", new SelectController(mvcService));
     }
 
     public static BeanFactory getInstance() {

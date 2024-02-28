@@ -3,6 +3,8 @@ package org.example.mvc.model.dao;
 import org.example.mvc.domain.dto.RequestUserDTO;
 import org.example.mvc.domain.dto.ResponseUserDTO;
 
+import java.util.List;
+
 public class OracleDao implements MvcDao {
 
     @Override
@@ -24,5 +26,10 @@ public class OracleDao implements MvcDao {
     @Override
     public void deleteRow() {
         System.out.println("debug >>> OracleDB deleteRow()");
+    }
+
+    @Override
+    public List<ResponseUserDTO> selectRow() {
+        return null;
     }
 }

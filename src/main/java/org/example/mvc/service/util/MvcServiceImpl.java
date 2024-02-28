@@ -4,6 +4,8 @@ import org.example.mvc.domain.dto.RequestUserDTO;
 import org.example.mvc.domain.dto.ResponseUserDTO;
 import org.example.mvc.model.dao.MvcDao;
 
+import java.util.List;
+
 public class MvcServiceImpl implements MvcService {
 
     MvcDao mvcDao;
@@ -32,5 +34,11 @@ public class MvcServiceImpl implements MvcService {
     @Override
     public void delete() {
         System.out.println("MvcServiceImpl.delete");
+    }
+
+    @Override
+    public List<ResponseUserDTO> select() {
+        System.out.println("debug >>> service delete()");
+        return mvcDao.selectRow();
     }
 }

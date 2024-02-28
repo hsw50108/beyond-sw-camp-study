@@ -7,6 +7,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MariaDao implements MvcDao {
     private static final String URL = "jdbc:mariadb://localhost:3306/encore";
     private static final String DRIVER = "org.mariadb.jdbc.Driver";
@@ -23,9 +26,10 @@ public class MariaDao implements MvcDao {
 
     @Override
     public void joinRow() {
-        System.out.println("debug >>> MariaDB joinRow()");
+
     }
 
+    @Override
     public ResponseUserDTO loginRow(RequestUserDTO params) {
         System.out.println("debug >>> MariaDB loginRow()");
         System.out.println("debug >>> MariaDB id  : " + params.getId());
@@ -35,7 +39,7 @@ public class MariaDao implements MvcDao {
         PreparedStatement pstmt = null;
         ResultSet rset = null;
         ResponseUserDTO user = null;
-        String SQL = "select ID, PWD, NAME from encore_user_tbl where id = ? and pwd = ?";
+        String SQL = "select id, pwd, name from encore_user_tbl where id = ? and pwd = ?";
         try {
             conn = DriverManager.getConnection(URL, ID, PASSWORD);
             pstmt = conn.prepareStatement(SQL);
@@ -68,5 +72,38 @@ public class MariaDao implements MvcDao {
     @Override
     public void deleteRow() {
         System.out.println("debug >>> MariaDB deleteRow()");
+    }
+
+    @Override
+    public List<ResponseUserDTO> selectRow() {
+        System.out.println("debug >>> MariaDB selectRow loginRow()");
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        List<ResponseUserDTO> list = new ArrayList<ResponseUserDTO>();
+
+        String SQL = "select ID, PWD, NAME from encore_user_tbl";
+
+        try {
+            conn = DriverManager.getConnection(URL, ID, PASSWORD);
+            pstmt = conn.prepareStatement(SQL);
+            rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                ResponseUserDTO user = new ResponseUserDTO(rset.getString(1), rset.getString(2), rset.getString(3));
+                list.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {conn.close();}
+            } catch (Exception e) {
+
+            }
+        }
+        return list;
     }
 }
