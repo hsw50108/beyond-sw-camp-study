@@ -8,6 +8,7 @@ import org.example.mvc.util.view.View;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginController implements Controller {
     private MvcService mvcService;
@@ -32,9 +33,12 @@ public class LoginController implements Controller {
         View view = new View();
 
         if (responseUserDTO != null) {
-            request.setAttribute("user", responseUserDTO);
+//            request.setAttribute("user", responseUserDTO); // request scope
+            HttpSession session = request.getSession(); // session create
+            session.setAttribute("user", responseUserDTO);
+
             view.setFlag(true);
-            view.setResponseJsp("./ok.jsp");
+            view.setResponseJsp("./main.jsp");
             return view;
         } else {
             view.setFlag(true);
