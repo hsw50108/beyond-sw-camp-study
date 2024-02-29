@@ -23,13 +23,17 @@ public class SelectController implements Controller {
         System.out.println("SelectController.execute");
         List<ResponseUserDTO> list = mvcService.select();
 
+        // 아래 출력 결과는 JSP를 이용해서 브라우저에 출력
         for (ResponseUserDTO dto : list) {
             System.out.println(dto);
         }
 
+        // 데이터를 심어보자
+        request.setAttribute("list", list);
+
         View view = new View();
         view.setFlag(true);
-        view.setResponseJsp("./ok.jsp");
+        view.setResponseJsp("../list/list.jsp");
         return view;
     }
 }
