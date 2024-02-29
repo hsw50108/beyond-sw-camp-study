@@ -32,7 +32,8 @@ public class BeanFactory {
         map.put("/update.hanwha", new UpdateController(mvcService));
         map.put("/delete.hanwha", new DeleteController(mvcService));
         // 새로운 업무 등록
-        map.put("/select.hanwha", new SelectController(mvcService));
+        map.put("/select/select.hanwha", new SelectController(mvcService));
+        map.put("/logout.hanwha", new LogoutController());
     }
 
     public static BeanFactory getInstance() {
