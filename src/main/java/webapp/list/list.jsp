@@ -3,42 +3,41 @@
 <%@ page import="org.example.mvc.domain.dto.ResponseUserDTO" %>
 <%@ page import="org.example.mvc.domain.dto.ResponseUserDTO" %>
 
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ListIterator" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page errorPage="../error/error.jsp" %>
 
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>insert title here</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-<%!
-    private List<ResponseUserDTO> list;
-%>
-<%
-    list = (List<ResponseUserDTO>) request.getAttribute("list");
-    ListIterator<ResponseUserDTO> iter = list.listIterator();
-%>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">아이디</th>
+        <th scope="col">패스워드</th>
+        <th scope="col">이름</th>
+    </tr>
 
-<table>
-    <tr>
-        <th>아이디</th>
-        <th>패스워드</th>
-        <th>이름</th>
-    </tr>
+    </thead>
     <%
-        while (iter.hasNext()) {
+        ArrayList<ResponseUserDTO> list = (ArrayList<ResponseUserDTO>) request.getAttribute("list");
+        for (int i = 0; i < list.size(); i++) {
     %>
+    <%--        for (ResponseUserDTO tmp : list) { %>--%>
     <tr>
-        <% ResponseUserDTO data = iter.next(); %>
-        <td><%=data.getId()%></td>
-        <td><%=data.getPwd()%></td>
-        <td><%=data.getName()%></td>
+        <td><%=list.get(i).getId()%>
+        </td>
+        <td><%=list.get(i).getPwd()%>
+        </td>
+        <td><%=list.get(i).getName()%>
+        </td>
     </tr>
-    <%
-        }
-    %>
+    <%}%>
 </table>
 </body>
 </html>
