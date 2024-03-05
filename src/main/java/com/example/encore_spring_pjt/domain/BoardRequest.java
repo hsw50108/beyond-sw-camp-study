@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class BoardRequest {
 
+    private Integer idx;
     private String title;
     private String content;
     private String writer;

@@ -1,6 +1,7 @@
 package com.example.encore_spring_pjt.mapper;
 
 import com.example.encore_spring_pjt.domain.BoardRequest;
+import com.example.encore_spring_pjt.domain.BoardResponse;
 import org.apache.ibatis.annotations.Mapper;
 
 /*
@@ -9,6 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 * */
 @Mapper
 public interface BoardMapper {
-    public void save(BoardRequest params);
+    void save(BoardRequest params);
+    BoardResponse findByIdx(BoardRequest params);
 
 }

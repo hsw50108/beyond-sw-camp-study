@@ -2,16 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.encore_spring_pjt.mapper.BoardMapper">
-    <sql id="boardColumns">title
+    <sql id="insertColumns">title
     , content, writer, view_cnt, notice_yn, secret_yn, delete_yn, insert_time, update_time</sql>
 
+    <sql id="selectColumns">idx
+    , title
+    , content, writer, view_cnt, notice_yn, secret_yn, delete_yn, insert_time, update_time</sql>
+
+
     <insert id="save" parameterType="com.example.encore_spring_pjt.domain.BoardRequest">
-
-        INSERT INTO ENCORE_BOARD_TBL(
-            <include refid="boardColumns"/>
-
-        )
+        INSERT INTO ENCORE_BOARD_TBL(<include refid="insertColumns"/>)
         values (#{title}, #{content},#{writer}, 0,#{noticeYn},#{secretYn}, false, NOW(), NULL)
     </insert>
 
+    <select id="findByIdx"
+            parameterType="com.example.encore_spring_pjt.domain.BoardRequest"
+            resultType="com.example.encore_spring_pjt.domain.BoardResponse">
+        SELECT <include refid="selectColumns"/>
+        FROM encore_board_tbl
+        WHERE idx = #{idx}
+    </select>
 </mapper>
+
+

@@ -1,6 +1,7 @@
 package com.example.encore_spring_pjt.mapper;
 
 import com.example.encore_spring_pjt.domain.BoardRequest;
+import com.example.encore_spring_pjt.domain.BoardResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,5 +29,14 @@ class BoardMapperTest {
         boardMapper.save(boardRequest);
     }
 
+    @Test
+    void findByIdx() {
+        System.out.println("BoardMapperTest.findById");
+        BoardRequest boardRequest = new BoardRequest();
+        boardRequest.setIdx(1);
+        BoardResponse response = boardMapper.findByIdx(boardRequest);
+        System.out.println("BoardMapperTest.find result : ");
+        System.out.println(response);
+    }
 
 }
