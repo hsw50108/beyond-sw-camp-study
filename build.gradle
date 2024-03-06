@@ -38,6 +38,10 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+
+    // JSP
+    implementation group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '10.1.19'
+    implementation group: 'javax.servlet.jsp.jstl', name: 'jstl-api', version: '1.2'
 }
 
 tasks.named('test') {
