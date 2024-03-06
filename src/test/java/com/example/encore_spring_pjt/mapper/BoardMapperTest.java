@@ -20,7 +20,14 @@ class BoardMapperTest {
     public void save() {
 //        System.out.println("BoardMapperTest.save" + boardMapper);
 
-        BoardRequest boardRequest = new BoardRequest();
+//        BoardRequest boardRequest = new BoardRequest();
+
+        BoardRequest boardRequest = BoardRequest.builder()
+                .title("builder")
+                .writer("dongwook")
+                .noticeYn(true)
+                .secretYn(true)
+                .build();
 
         boardRequest.setTitle("orm class3");
         boardRequest.setContent("mybatis mapping3");
@@ -34,8 +41,13 @@ class BoardMapperTest {
     @Test
     void findByIdx() throws Exception {
         System.out.println("BoardMapperTest.findById");
-        BoardRequest boardRequest = new BoardRequest();
-        boardRequest.setIdx(1);
+//        BoardRequest boardRequest = new BoardRequest();
+//        boardRequest.setIdx(1);
+
+        BoardRequest boardRequest = BoardRequest.builder()
+                .idx(1)
+                .build();
+
         BoardResponse response = boardMapper.findByIdx(boardRequest);
 
         System.out.println("BoardMapperTest.find result : ");
@@ -49,8 +61,13 @@ class BoardMapperTest {
     void updateByIdx() throws Exception {
         System.out.println("BoardMapperTest.findById");
 
-        BoardRequest boardRequest = new BoardRequest();
-        boardRequest.setIdx(1);
+//        BoardRequest boardRequest = new BoardRequest();
+//        boardRequest.setIdx(1);
+
+        BoardRequest boardRequest = BoardRequest.builder()
+                .idx(1)
+                .build();
+
         BoardResponse response = boardMapper.findByIdx(boardRequest);
 
         if (response != null) {
@@ -73,8 +90,14 @@ class BoardMapperTest {
     @Test
     void deleteByIdx() {
         System.out.println("BoardMapperTest.deleteByIdx");
-        BoardRequest boardRequest = new BoardRequest();
-        boardRequest.setIdx(2);
+//        BoardRequest boardRequest = new BoardRequest();
+//        boardRequest.setIdx(2);
+
+        BoardRequest boardRequest = BoardRequest.builder()
+                .idx(2)
+                .build();
+
+
         boardMapper.deleteByIdx(boardRequest);
     }
 

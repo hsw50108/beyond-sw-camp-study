@@ -10,9 +10,11 @@
     , content, writer, view_cnt, notice_yn, secret_yn, delete_yn, insert_time, update_time</sql>
 
 
-    <insert id="save" parameterType="com.example.encore_spring_pjt.domain.BoardRequest">
-        INSERT INTO ENCORE_BOARD_TBL(<include refid="insertColumns"/>)
-        values (#{title}, #{content},#{writer}, 0,#{noticeYn},#{secretYn}, false, NOW(), NULL)
+    <insert id="save" parameterType="com.example.encore_spring_pjt.domain.BoardRequest"
+        useGeneratedKeys="true"
+            keyProperty="idx">
+        INSERT INTO ENCORE_BOARD_TBL(<include refid="selectColumns"/>)
+        values (#{idx}, #{title}, #{content},#{writer}, 0,#{noticeYn},#{secretYn}, false, NOW(), NULL)
     </insert>
 
     <select id="findByIdx"
@@ -53,7 +55,7 @@
         SELECT
         <include refid="selectColumns"/>
         FROM encore_board_tbl
-        WHERE delete_yn = false
+        WHERE delete_yn = 0
     </select>
 
 
