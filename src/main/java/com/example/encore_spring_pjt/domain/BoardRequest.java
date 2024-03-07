@@ -18,7 +18,7 @@ public class BoardRequest {
     private String title;
     private String content;
     private String writer;
-    private boolean noticeYn;
-    private boolean secretYn;
+    private Boolean noticeYn;
+    private Boolean secretYn;
 
 }
