@@ -7,6 +7,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -55,5 +56,20 @@ public class BoardController {
         return "view";
     }
 
+    @GetMapping("/write.hanwha")
+    public String writeFormPage() {
+        System.out.println("BoardController.writeFormPage");
+        return "write";
+    }
 
+    @PostMapping("/write.hanwha")
+    public String writeForm(BoardRequest request) {
+        System.out.println("BoardController.writeForm");
+
+        request.setSecretYn(false);
+        request.setNoticeYn(false);
+        boardService.saveBoard(request);
+
+        return "redirect:/board/list.hanwha";
+    }
 }

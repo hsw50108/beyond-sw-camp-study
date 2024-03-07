@@ -2,28 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.encore_spring_pjt.mapper.BoardMapper">
-    <sql id="insertColumns">title
+    <sql id="insertColumns">idx,title
     , content, writer, view_cnt, notice_yn, secret_yn, delete_yn, insert_time, update_time</sql>
 
-    <sql id="selectColumns">
-        IDX         ,
-    TITLE       ,
-    CONTENT     ,
-    WRITER      ,
-    VIEW_CNT    ,
-    NOTICE_YN   ,
-    SECRET_YN   ,
-    DELETE_YN   ,
-    INSERT_TIME ,
-    UPDATE_TIME ,
-    DELETE_TIME
-    </sql>
+    <sql id="selectColumns">idx
+    , title
+    , content, writer, view_cnt, notice_yn, secret_yn, delete_yn, insert_time, update_time</sql>
 
 
     <insert id="save" parameterType="com.example.encore_spring_pjt.domain.BoardRequest"
         useGeneratedKeys="true"
             keyProperty="idx">
-        INSERT INTO ENCORE_BOARD_TBL(<include refid="selectColumns"/>)
+        INSERT INTO ENCORE_BOARD_TBL(<include refid="insertColumns"/>)
         values (#{idx}, #{title}, #{content},#{writer}, 0,#{noticeYn},#{secretYn}, false, NOW(), NULL)
     </insert>
 

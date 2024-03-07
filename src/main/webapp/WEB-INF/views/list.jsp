@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +59,7 @@
                         </table>
 
                         <div class="btn_wrap text-right">
-                            <a href="" class="btn btn-primary waves-effect waves-light">등록</a>
+                            <a href="/board/write.hanwha" class="btn btn-primary waves-effect waves-light">등록</a>
                         </div>
 
                         <!-- page  -->
