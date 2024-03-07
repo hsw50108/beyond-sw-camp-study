@@ -23,7 +23,7 @@ class BoardMapperTest {
 //        BoardRequest boardRequest = new BoardRequest();
 
         BoardRequest boardRequest = BoardRequest.builder()
-                .title("builder")
+                .title("builder2")
                 .writer("dongwook")
                 .noticeYn(true)
                 .secretYn(true)
@@ -67,6 +67,8 @@ class BoardMapperTest {
         BoardRequest boardRequest = BoardRequest.builder()
                 .idx(1)
                 .build();
+
+
 
         BoardResponse response = boardMapper.findByIdx(boardRequest);
 

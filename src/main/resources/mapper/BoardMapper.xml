@@ -5,9 +5,19 @@
     <sql id="insertColumns">title
     , content, writer, view_cnt, notice_yn, secret_yn, delete_yn, insert_time, update_time</sql>
 
-    <sql id="selectColumns">idx
-    , title
-    , content, writer, view_cnt, notice_yn, secret_yn, delete_yn, insert_time, update_time</sql>
+    <sql id="selectColumns">
+        IDX         ,
+    TITLE       ,
+    CONTENT     ,
+    WRITER      ,
+    VIEW_CNT    ,
+    NOTICE_YN   ,
+    SECRET_YN   ,
+    DELETE_YN   ,
+    INSERT_TIME ,
+    UPDATE_TIME ,
+    DELETE_TIME
+    </sql>
 
 
     <insert id="save" parameterType="com.example.encore_spring_pjt.domain.BoardRequest"

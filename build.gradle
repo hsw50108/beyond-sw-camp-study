@@ -42,6 +42,11 @@ dependencies {
     // JSP
     implementation group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '10.1.19'
     implementation group: 'javax.servlet.jsp.jstl', name: 'jstl-api', version: '1.2'
+
+    // https://mvnrepository.com/artifact/javax.servlet/jstl
+//    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+//    implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 }
 
 tasks.named('test') {

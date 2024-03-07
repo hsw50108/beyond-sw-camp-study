@@ -23,7 +23,7 @@
 			<div class="login-box-body">
 			  <p class="login-box-msg">Sign in to start your session</p>
 	  
-	  <form action="#" method="post">
+	  <form action="/user/login.hanwha" method="post">
 		<div class="form-group has-feedback">
 		  <input type="text" name="id" class="form-control" placeholder="USER ID"/>
 		  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
