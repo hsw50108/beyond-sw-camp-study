@@ -20,7 +20,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Transactional
     @Override
-    public Integer saveBoard(BoardRequest params) {
+    public Integer save(BoardRequest params) {
         System.out.println("BoardServiceImpl.saveBoard" + boardMapper);
         boardMapper.save(params);
         return params.getIdx();
@@ -28,7 +28,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public BoardResponse findBoardByIdx(BoardRequest params) {
+    public BoardResponse findByIdx(BoardRequest params) {
         System.out.println("BoardServiceImpl.findBoardByIdx");
         BoardResponse findBoard = boardMapper.findByIdx(params);
         return findBoard;
@@ -36,14 +36,14 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public Integer updateBoardByIdx(BoardRequest params) {
+    public Integer updateByIdx(BoardRequest params) {
         System.out.println("BoardServiceImpl.updateBoardByIdx");
         boardMapper.updateByIdx(params);
         return params.getIdx();
     }
 
     @Override
-    public Integer deleteBoardByIdx(BoardRequest params) {
+    public Integer deleteByIdx(BoardRequest params) {
         System.out.println("BoardServiceImpl.deleteBoardByIdx");
         boardMapper.deleteByIdx(params);
         return params.getIdx();
@@ -51,14 +51,13 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<BoardResponse> boardLists() {
+    public List<BoardResponse> findAll() {
         System.out.println("BoardServiceImpl.boardLists");
-        List<BoardResponse> boardResponseList = boardMapper.findAll();
-        return boardResponseList;
+        return boardMapper.findAll();
     }
 
     @Override
-    public Integer cntBoard() {
+    public Integer count() {
         System.out.println("BoardServiceImpl.cntBoard");
         return boardMapper.count();
     }

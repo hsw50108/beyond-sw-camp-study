@@ -6,11 +6,10 @@ import com.example.encore_spring_pjt.domain.BoardResponse;
 import java.util.List;
 
 public interface BoardService {
-    Integer saveBoard(BoardRequest params);
-    BoardResponse findBoardByIdx(BoardRequest params);
-    Integer updateBoardByIdx(BoardRequest params);
-    Integer deleteBoardByIdx(BoardRequest params);
-    List<BoardResponse> boardLists();
-    Integer cntBoard();
-
+    Integer save(BoardRequest params);
+    BoardResponse findByIdx(BoardRequest params);
+    Integer updateByIdx(BoardRequest params);
+    Integer deleteByIdx(BoardRequest params);
+    List<BoardResponse> findAll();
+    Integer count();
 }

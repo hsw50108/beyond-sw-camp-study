@@ -26,52 +26,53 @@
                     <div class="box-content">
 
 
-
+    <input type ="hidden" id ="idx" value ="${response.idx}"/>
 
     <div class="card-content">
         <div class="form-group">
             <label class="col-sm-2 control-label">제목</label>
             <div class="col-sm-10">
-                <p class="form-control" id="title">${boardResponse.title}</p>
+                <p class="form-control" id="title">${response.title}</p> 
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">이름</label>
             <div class="col-sm-10">
-                <p class="form-control" id="writer">${boardResponse.writer}</p>
+                <p class="form-control" id="writer">${response.writer}</p> 
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">내용</label>
             <div class="col-sm-10">
-                <p class="form-control" id="content">${boardResponse.content}</p>
+                <p class="form-control" id="content">${response.content}</p> 
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">등록일</label>
             <div class="col-sm-10">
-                <p class="form-control">${boardResponse.insertTime}</p>
+                <p class="form-control">${response.insertTime}</p> 
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">조회 수</label>
             <div class="col-sm-10">
-                <p class="form-control" id="viewCnt">${boardResponse.viewCnt}</p>
+                <p class="form-control" id="viewCnt">${response.viewCnt}</p>
             </div>
         </div>
 
         <div class="btn_wrap text-center">
-            <a  href="/board/list.hanwha"
+            <a  href="/board/list.hanwha" 
                 class="btn btn-default waves-effect waves-light">뒤로가기</a>
-            <a  href="javascript:void(0)" 
-                class="btn btn-primary waves-effect waves-light"
-                onclick="writePage();">수정하기</a>
-            
-            <button type="button" class="btn btn-danger waves-effect waves-light" id="delBtn">삭제하기</button>
+            <a  href="/board/write.hanwha?idx=${response.idx}"
+                class="btn btn-primary waves-effect waves-light">수정하기</a>
+            <button type="button"
+                    class="btn btn-danger waves-effect waves-light"
+                    id="delBtn">삭제하기</button>
+           
         </div>
     </div>
 
@@ -127,7 +128,28 @@
         			
         <script>
         /*<![CDATA[*/
+        $(document).ready(function(){
+            $("#delBtn").click(function() {
+                //window.alert("게시글이 삭제되었습니다.");
+                //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ");
+                //console.log($("#idx").val());
+                console.log(location.search);
+                //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ");
+                //const   idx = $("#idx").val();
+                if (!confirm(idx+"번 게시글을 삭제하시겠습니까?")){
+                    return false;
+                } else {
+                    location.href="/board/delete.hanwha"+location.search;
+                    // return true ;
+                }
+            })
+        });
 
+        $(document).ready(function (){
+            $("#title").click(function (){
+                console.log("title click");
+            });
+        });
         /*]]>*/
         </script>
 </body>

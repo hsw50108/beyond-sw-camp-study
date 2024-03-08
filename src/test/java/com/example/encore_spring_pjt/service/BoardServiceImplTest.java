@@ -37,14 +37,14 @@ class BoardServiceImplTest {
         boardRequest.setNoticeYn(true);
         boardRequest.setSecretYn(true);
 
-        Integer idx = boardService.saveBoard(boardRequest);
+        Integer idx = boardService.save(boardRequest);
         System.out.println("입력한 데이터의 키 값을 출력 : " + idx);
     }
 
     @Test
     void cntBoard() {
         System.out.println("BoardServiceImplTest.cntBoard");
-        Integer cntBoard = boardService.cntBoard();
+        Integer cntBoard = boardService.count();
         System.out.println(cntBoard);
     }
 
@@ -58,7 +58,7 @@ class BoardServiceImplTest {
                 .build();
 
         boardRequest.setIdx(2);
-        BoardResponse boardResponse = boardService.findBoardByIdx(boardRequest);
+        BoardResponse boardResponse = boardService.findByIdx(boardRequest);
         System.out.println(boardResponse);
     }
 
@@ -75,13 +75,13 @@ class BoardServiceImplTest {
 //        BoardRequest boardRequest = BoardRequest.of(3);
 
 //        boardRequest.setIdx(3);
-        BoardResponse response = boardService.findBoardByIdx(boardRequest);
+        BoardResponse response = boardService.findByIdx(boardRequest);
 
         if (response != null) {
             boardRequest.setTitle("update service builder");
             boardRequest.setContent("update content sevice");
             boardRequest.setWriter("update by dongwook");
-            Integer idx = boardService.updateBoardByIdx(boardRequest);
+            Integer idx = boardService.updateByIdx(boardRequest);
             System.out.println("업데이트된 idx : "+idx);
         } else {
             throw new IllegalArgumentException("찾는 회원이 없습니다.");
@@ -99,14 +99,14 @@ class BoardServiceImplTest {
 
 
         boardRequest.setIdx(3);
-        Integer idx = boardService.deleteBoardByIdx(boardRequest);
+        Integer idx = boardService.deleteByIdx(boardRequest);
         System.out.println("삭제된 idx : " + idx);
     }
 
     @Test
     void findAll() {
         System.out.println("BoardServiceImplTest.findAll");
-        List<BoardResponse> boardResponses = boardService.boardLists();
+        List<BoardResponse> boardResponses = boardService.findAll();
 
         for (BoardResponse boardResponse : boardResponses) {
             System.out.println(boardResponse);
@@ -115,7 +115,7 @@ class BoardServiceImplTest {
     @Test
     void  serviceCountTest(){
         System.out.println("BoardServiceImplTest.serviceCountTest");
-        Integer cntBoard = boardService.cntBoard();
+        Integer cntBoard = boardService.count();
         System.out.println(cntBoard);
     }
 

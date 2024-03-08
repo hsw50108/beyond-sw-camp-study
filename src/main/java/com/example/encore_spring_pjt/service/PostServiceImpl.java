@@ -15,33 +15,33 @@ public class PostServiceImpl implements BoardService {
     private BoardMapper boardMapper;
 
     @Override
-    public Integer saveBoard(BoardRequest params) {
+    public Integer save(BoardRequest params) {
         System.out.println("PostServiceImpl.saveBoard" + boardMapper);
         return null;
     }
 
     @Override
-    public BoardResponse findBoardByIdx(BoardRequest params) {
+    public BoardResponse findByIdx(BoardRequest params) {
         return null;
     }
 
     @Override
-    public Integer updateBoardByIdx(BoardRequest params) {
+    public Integer updateByIdx(BoardRequest params) {
         return null;
     }
 
     @Override
-    public Integer deleteBoardByIdx(BoardRequest params) {
+    public Integer deleteByIdx(BoardRequest params) {
         return null;
     }
 
     @Override
-    public List<BoardResponse> boardLists() {
+    public List<BoardResponse> findAll() {
         return null;
     }
 
     @Override
-    public Integer cntBoard() {
+    public Integer count() {
         return null;
     }
 }
