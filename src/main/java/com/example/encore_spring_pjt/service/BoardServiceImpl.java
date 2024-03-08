@@ -30,8 +30,8 @@ public class BoardServiceImpl implements BoardService {
     @Transactional
     public BoardResponse findByIdx(BoardRequest params) {
         System.out.println("BoardServiceImpl.findBoardByIdx");
-        BoardResponse findBoard = boardMapper.findByIdx(params);
-        return findBoard;
+        boardMapper.updateViewCnt(params);
+        return boardMapper.findByIdx(params);
     }
 
     @Override
@@ -61,5 +61,6 @@ public class BoardServiceImpl implements BoardService {
         System.out.println("BoardServiceImpl.cntBoard");
         return boardMapper.count();
     }
+
 
 }

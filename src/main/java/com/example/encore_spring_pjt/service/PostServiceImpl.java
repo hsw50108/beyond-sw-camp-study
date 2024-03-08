@@ -44,4 +44,5 @@ public class PostServiceImpl implements BoardService {
     public Integer count() {
         return null;
     }
+
 }

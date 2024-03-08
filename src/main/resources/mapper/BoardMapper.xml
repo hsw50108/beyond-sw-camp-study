@@ -100,4 +100,11 @@
         WHERE DELETE_YN = 0
     </select>
 
+    <update id="updateViewCnt"
+            parameterType="com.example.encore_spring_pjt.domain.BoardRequest">
+        update ENCORE_BOARD_TBL
+        set view_cnt = view_cnt + 1
+        WHERE IDX = #{idx}
+    </update>
+
 </mapper>

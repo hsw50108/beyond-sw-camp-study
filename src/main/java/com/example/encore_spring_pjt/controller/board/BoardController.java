@@ -101,4 +101,5 @@ public class BoardController {
         System.out.println(idx + "번 수정");
         return "redirect:/board/list.hanwha";
     }
+
 }
