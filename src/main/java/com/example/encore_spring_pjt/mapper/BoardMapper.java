@@ -5,6 +5,7 @@ import com.example.encore_spring_pjt.domain.BoardResponse;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 /*
  * encore_board_tbl 과 CRUD 작업을 위한 추상메서드 선언
@@ -13,7 +14,7 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
     void save(BoardRequest params);
-    BoardResponse findByIdx(BoardRequest params);
+    Optional<BoardResponse> findByIdx(BoardRequest params);
     void updateByIdx(BoardRequest params);
     // 레코드 건수 확인
     int count();

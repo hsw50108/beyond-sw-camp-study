@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -53,7 +54,7 @@ public class BoardController {
         response 객체를 반환받고 
         해당 response 객체 Model에 심어서 View 페이지로 전달 과정 
         */
-        BoardResponse response = service.findByIdx(params);
+        Optional<BoardResponse> response = service.findByIdx(params);
         model.addAttribute("response", response);
 
         return "view";
@@ -65,7 +66,7 @@ public class BoardController {
         System.out.println("debug >>>>> " + params);
         if (params.getIdx() != null) {
             System.out.println("debug >>>> update");
-            BoardResponse response = service.findByIdx(params);
+            Optional<BoardResponse> response = service.findByIdx(params);
             model.addAttribute("response", response);
         }
         return "write";

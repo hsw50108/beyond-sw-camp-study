@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("post")
 public class PostServiceImpl implements BoardService {
@@ -21,7 +22,7 @@ public class PostServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardResponse findByIdx(BoardRequest params) {
+    public Optional<BoardResponse> findByIdx(BoardRequest params) {
         return null;
     }
 

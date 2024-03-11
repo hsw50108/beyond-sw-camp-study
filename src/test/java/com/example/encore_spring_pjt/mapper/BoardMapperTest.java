@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class BoardMapperTest {
@@ -48,7 +49,7 @@ class BoardMapperTest {
                 .idx(1)
                 .build();
 
-        BoardResponse response = boardMapper.findByIdx(boardRequest);
+        Optional<BoardResponse> response = boardMapper.findByIdx(boardRequest);
 
         System.out.println("BoardMapperTest.find result : ");
         System.out.println(response);
@@ -70,7 +71,7 @@ class BoardMapperTest {
 
 
 
-        BoardResponse response = boardMapper.findByIdx(boardRequest);
+        Optional<BoardResponse> response = boardMapper.findByIdx(boardRequest);
 
         if (response != null) {
             boardRequest.setTitle("update3");

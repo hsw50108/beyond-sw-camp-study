@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("board")
 @RequiredArgsConstructor
@@ -28,10 +29,11 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public BoardResponse findByIdx(BoardRequest params) {
+    public Optional<BoardResponse> findByIdx(BoardRequest params) {
         System.out.println("BoardServiceImpl.findBoardByIdx");
         boardMapper.updateViewCnt(params);
-        return boardMapper.findByIdx(params);
+        Optional<BoardResponse> response = boardMapper.findByIdx(params);
+        return response;
     }
 
     @Override
