@@ -1,47 +1,44 @@
 package com.example.encore_spring_pjt.service;
 
+import com.example.encore_spring_pjt.controller.rest.dao.PostRepository;
+import com.example.encore_spring_pjt.domain.BoardEntity;
 import com.example.encore_spring_pjt.domain.BoardRequest;
 import com.example.encore_spring_pjt.domain.BoardResponse;
 import com.example.encore_spring_pjt.mapper.BoardMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service("post")
-public class PostServiceImpl implements BoardService {
+@RequiredArgsConstructor
+public class PostServiceImpl {
 
-    @Autowired
-    private BoardMapper boardMapper;
-
-    @Override
-    public Integer save(BoardRequest params) {
-        System.out.println("PostServiceImpl.saveBoard" + boardMapper);
-        return null;
+    private final PostRepository postRepository;
+    public void save(BoardRequest request) {
+        BoardEntity boardEntity = BoardEntity.of(request);
+        postRepository.save(boardEntity);
     }
 
-    @Override
     public Optional<BoardResponse> findByIdx(BoardRequest params) {
         return null;
     }
 
-    @Override
     public Integer updateByIdx(BoardRequest params) {
         return null;
     }
 
-    @Override
     public Integer deleteByIdx(BoardRequest params) {
         return null;
     }
 
-    @Override
-    public List<BoardResponse> findAll() {
-        return null;
+    public List<BoardEntity> findAll() {
+        return postRepository.findAll();
     }
 
-    @Override
     public Integer count() {
         return null;
     }
