@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @AllArgsConstructor
-public class UserResponse {
+public class UserResponseStudy {
 
     private Long id;
     private String name;

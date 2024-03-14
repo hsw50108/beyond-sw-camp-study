@@ -1,11 +1,9 @@
 package com.example.encore_spring_pjt.study.api;
 
-import com.example.encore_spring_pjt.study.api.dto.request.UserRequest;
-import com.example.encore_spring_pjt.study.api.dto.response.UserResponse;
-import com.example.encore_spring_pjt.study.service.UserService;
-import lombok.Getter;
+import com.example.encore_spring_pjt.study.api.dto.request.UserRequestStudy;
+import com.example.encore_spring_pjt.study.api.dto.response.UserResponseStudy;
+import com.example.encore_spring_pjt.study.service.UserServiceStudy;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,25 +13,25 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserApiController {
 
-    private final UserService userService;
+    private final UserServiceStudy userServiceStudy;
 
     // 저장
     @PostMapping("/save")
-    public void saveUser(@RequestBody UserRequest request) {
-        userService.save(request);
+    public void saveUser(@RequestBody UserRequestStudy request) {
+        userServiceStudy.save(request);
     }
 
     // 전체조회
     @GetMapping("")
-    public List<UserResponse> users() {
-        List<UserResponse> userList = userService.getUserList();
+    public List<UserResponseStudy> users() {
+        List<UserResponseStudy> userList = userServiceStudy.getUserList();
         return userList;
     }
 
     // 단건조회
     @GetMapping("/{id}")
-    public UserResponse getUser(@PathVariable("id") Long id) {
-        userService.findUserByIdx(id);
+    public UserResponseStudy getUser(@PathVariable("id") Long id) {
+        userServiceStudy.findUserByIdx(id);
         return null;
     }
 }

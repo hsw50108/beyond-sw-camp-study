@@ -1,9 +1,7 @@
 package com.example.encore_spring_pjt.study.domain;
 
-import com.example.encore_spring_pjt.study.api.dto.request.UserRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
