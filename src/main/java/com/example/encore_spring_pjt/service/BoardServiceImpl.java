@@ -45,6 +45,13 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public Optional<BoardResponse> findBoardNotView(BoardRequest params) {
+        System.out.println("BoardServiceImpl.findBoardNotView");
+        Optional<BoardResponse> response = boardMapper.findByIdx(params);
+        return response;
+    }
+
+    @Override
     public Integer deleteByIdx(BoardRequest params) {
         System.out.println("BoardServiceImpl.deleteBoardByIdx");
         boardMapper.deleteByIdx(params);

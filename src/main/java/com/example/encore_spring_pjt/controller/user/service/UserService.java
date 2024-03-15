@@ -21,4 +21,9 @@ public class UserService {
         System.out.println("UserService.register");
         userMapper.insertRow(request);
     }
+
+    public String getPwd(UserRequest params){
+        System.out.println("debug >>>> service getPwd");
+        return userMapper.getPwd(params);
+    }
 }

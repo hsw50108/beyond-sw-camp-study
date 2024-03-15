@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     UserResponse loginRow(UserRequest request);
     void insertRow(UserRequest request);
+
+    String getPwd(UserRequest params);
 }

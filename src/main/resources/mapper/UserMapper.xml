@@ -11,6 +11,14 @@
         WHERE ID = #{id} AND PWD = #{pwd}
     </select>
 
+    <select id="getPwd"
+            parameterType="com.example.encore_spring_pjt.controller.user.domain.UserRequest"
+            resultType="String">
+        SELECT pwd
+        FROM ENCORE_USER_MEMBER_TBL
+        WHERE id = #{id}
+    </select>
+
     <select id="insertRow"
             parameterType="com.example.encore_spring_pjt.controller.user.domain.UserRequest">
         insert into ENCORE_USER_MEMBER_TBL(ID, PWD, NAME)
