@@ -7,6 +7,7 @@ import org.example.mvc.util.view.View;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// test
 public class DeleteController implements Controller {
     private MvcService mvcService;
 
