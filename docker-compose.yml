@@ -1,8 +1,8 @@
 version: '3'
 services:
   leafy-postgres:
-    build: ./leafy-postgresql
-    image: leafy-postgres:5.0.0-compose
+#    build: ./leafy-postgresql
+    image: dongwook0108/leafy-postgres:54a963b7a4e1fabae155bf026e74dc14b0be6ea5
     volumes:
       - mydata:/var/lib/postgresql/data
     deploy:
@@ -13,8 +13,8 @@ services:
     restart: always
 
   leafy-backend:
-    build: ./leafy-backend
-    image: leafy-backend:5.0.0-compose
+#    build: ./leafy-backend
+    image: dongwook0108/leafy-backend:cc2f6832d6a2fb103eecfe75e4abaf2a10dd2d2f
     environment:
       - DB_URL=leafy-postgres
     depends_on:
@@ -27,8 +27,8 @@ services:
     restart: on-failure
       
   leafy-front:
-    build: ./leafy-frontend
-    image: leafy-front:5.0.0-compose
+#    build: ./leafy-frontend
+    image: dongwook0108/leafy-frontend:ccf4831347c2c2bba2d300b4270970a45f8a1e8b
     environment:
       - BACKEND_HOST=leafy-backend
     ports:
